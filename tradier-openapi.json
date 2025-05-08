@@ -99,7 +99,24 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "profile": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "name": { "type": "string" },
+                        "account": {
+                          "type": "object",
+                          "properties": {
+                            "account_number": { "type": "string" },
+                            "type": { "type": "string" },
+                            "status": { "type": "string" }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -131,7 +148,17 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "balances": {
+                      "type": "object",
+                      "properties": {
+                        "cash": { "type": "number" },
+                        "equity": { "type": "number" },
+                        "market_value": { "type": "number" }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -163,7 +190,26 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "positions": {
+                      "type": "object",
+                      "properties": {
+                        "position": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "symbol": { "type": "string" },
+                              "quantity": { "type": "number" },
+                              "cost_basis": { "type": "number" },
+                              "market_value": { "type": "number" }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
