@@ -3,7 +3,7 @@
   "info": {
     "title": "Tradier Market Data",
     "version": "1.0.0",
-    "description": "Accede a cotizaciones y cadenas de opciones desde Tradier API"
+    "description": "Accede a cotizaciones, opciones y datos de cuenta desde Tradier API"
   },
   "servers": [
     {
@@ -88,6 +88,93 @@
           }
         ]
       }
+    },
+    "/user/profile": {
+      "get": {
+        "summary": "Obtener perfil de usuario",
+        "operationId": "getUserProfile",
+        "responses": {
+          "200": {
+            "description": "Perfil de cuenta obtenido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}/balances": {
+      "get": {
+        "summary": "Obtener balances de cuenta",
+        "operationId": "getAccountBalances",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Número de cuenta Tradier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Balances de cuenta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}/positions": {
+      "get": {
+        "summary": "Obtener posiciones abiertas",
+        "operationId": "getAccountPositions",
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" },
+            "description": "Número de cuenta Tradier"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Posiciones de cuenta",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -151,4 +238,3 @@
     }
   }
 }
-
