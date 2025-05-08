@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://sandbox.tradier.com/v1"
+      "url": "https://api.tradier.com/v1"
     }
   ],
   "paths": {
