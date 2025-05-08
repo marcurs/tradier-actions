@@ -1,0 +1,79 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Tradier Market Data",
+    "version": "1.0.0",
+    "description": "Accede a cotizaciones y cadenas de opciones desde Tradier API"
+  },
+  "servers": [
+    {
+      "url": "https://sandbox.tradier.com/v1"
+    }
+  ],
+  "paths": {
+    "/markets/quotes": {
+      "get": {
+        "summary": "Obtener cotización actual",
+        "operationId": "getQuote",
+        "parameters": [
+          {
+            "name": "symbols",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Símbolo o símbolos separados por coma (ej: AAPL,MSFT)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cotización obtenida",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/markets/options/chains": {
+      "get": {
+        "summary": "Obtener cadena de opciones",
+        "operationId": "getOptionChain",
+        "parameters": [
+          {
+            "name": "symbol",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string" }
+          },
+          {
+            "name": "expiration",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "format": "date" }
+          },
+          {
+            "name": "greeks",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "boolean" },
+            "description": "Incluir griegas en respuesta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cadena de opciones",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
