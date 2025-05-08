@@ -32,7 +32,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/QuoteResponse"
                 }
               }
             }
@@ -76,7 +76,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/OptionsChainResponse"
                 }
               }
             }
@@ -98,6 +98,57 @@
         "bearerFormat": "JWT"
       }
     },
-    "schemas": {}
+    "schemas": {
+      "QuoteResponse": {
+        "type": "object",
+        "properties": {
+          "quotes": {
+            "type": "object",
+            "properties": {
+              "quote": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "symbol": { "type": "string" },
+                    "last": { "type": "number" },
+                    "bid": { "type": "number" },
+                    "ask": { "type": "number" },
+                    "change": { "type": "number" },
+                    "volume": { "type": "integer" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "OptionsChainResponse": {
+        "type": "object",
+        "properties": {
+          "options": {
+            "type": "object",
+            "properties": {
+              "option": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "symbol": { "type": "string" },
+                    "strike": { "type": "number" },
+                    "expiration_date": { "type": "string" },
+                    "option_type": { "type": "string" },
+                    "bid": { "type": "number" },
+                    "ask": { "type": "number" },
+                    "last": { "type": "number" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }
+
